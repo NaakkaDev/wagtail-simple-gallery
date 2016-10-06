@@ -1,0 +1,47 @@
+.gallery-wrapper * {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.gallery-wrapper {
+  margin-top: 10px;
+}
+
+.gallery-container {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.gallery-thumbnail-container {
+  padding-right: 8px;
+  padding-bottom: 10px;
+}
+
+.gallery-thumbnail {
+  border: 2px solid #dfdfdf;
+  box-shadow: 1px 1px 3px #333;
+}
+
+.gallery-thumbnail:hover {
+  box-shadow: 1px 1px 3px #fff;
+}
+
+.gallery-pagination-container {
+  border-top: 9px solid #dfdfdf;
+  font-size: 20px;
+  padding-top: 10px;
+  list-style-type: none;
+}
+
+.gallery-pagination-container a {
+  padding: 4px 6px;
+}
+
+.gallery-pagination-item {
+  display: inline-block;
+}
+
+.gallery-pagination-item.active a {
+  text-decoration: underline;
+}

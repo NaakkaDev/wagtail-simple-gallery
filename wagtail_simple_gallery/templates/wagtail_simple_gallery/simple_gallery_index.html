@@ -1,0 +1,46 @@
+{% extends "simple_gallery_base.html" %}
+{% load static wagtailcore_tags wagtailimages_tags wagtailsimplegallery_tags %}
+
+{% block title %}{{ page.seo_title }}{% endblock %}
+{% block metadesc %}{{ page.search_description }}{% endblock %}
+
+{% block extra_style %}{% endblock %}
+
+{% block content %}
+  <div class="gallery-wrapper">
+    <header>
+      <h1>{{ page.intro_title }}</h1>
+      {{ page.intro_text|richtext }}
+    </header>
+
+    {% include 'wagtail_simple_gallery/simple_gallery.html' %}
+    
+    {% if gallery_images.has_next or gallery_images.has_previous %}
+    <div class="container">
+      <div class="gallery-pagination-container row">
+        <div class="col-sm-2">
+          {% if gallery_images.has_previous %}
+          <a href="?page={{ gallery_images.previous_page_number }}{% for key,value in request.GET.items %}{% ifnotequal key 'page' %}&amp;{{ key }}={{ value }}{% endifnotequal %}{% endfor %}">&lt;&lt; Previous</a>
+          {% endif %}
+        </div>
+        <div class="col-sm-8 text-center">
+          <ul class="gallery-pagination padding-0">
+          {% for page in gallery_images.paginator.page_range %}
+            <li class="gallery-pagination-item {% if gallery_images.number == page  %}active{% endif %}">
+              <a class="{% if gallery_images.number == page  %}active{% endif %}" href="?page={{page }}">{{ page }}</a>
+            </li>
+          {% endfor %}
+          </ul>
+        </div>
+        <div class="col-sm-2 text-right">
+          {% if gallery_images.has_next %}
+          <a href="?page={{ gallery_images.next_page_number }}{% for key,value in request.GET.items %}{% ifnotequal key 'page' %}&amp;{{ key }}={{ value }}{% endifnotequal %}{% endfor %}">Next &gt;&gt;</a>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+    {% endif %}
+  </div>
+{% endblock %}
+
+{% block extra_js %}{% endblock %}

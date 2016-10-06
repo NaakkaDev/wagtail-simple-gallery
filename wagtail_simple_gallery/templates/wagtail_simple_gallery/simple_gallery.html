@@ -1,0 +1,19 @@
+{% load static wagtailimages_tags %}
+
+  <link rel="stylesheet" href="{% static 'css/baguetteBox.min.css' %}"/>
+
+  <div class="gallery-container">
+  {% for img in gallery_images %}
+    <span class="gallery-thumbnail-container">
+      <a href="{{ img.original_url }}" title="{{ img.tags.all.names }}">{% image img width-260 class='gallery-thumbnail' %}</a>
+      <link rel="preload" href="{{ img.original_url }}"\>
+    </span>
+  {% endfor %}
+  </div>
+
+  {% if page.use_lightbox or use_lightbox %}
+  <script src="{% static 'js/baguetteBox.min.js' %}"></script>
+  <script type="text/javascript">
+    baguetteBox.run('.gallery-container');
+  </script>
+  {% endif %}
