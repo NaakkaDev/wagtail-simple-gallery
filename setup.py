@@ -9,7 +9,7 @@ with open(os.path.join(os.path.dirname(__file__), 'README.md')) as readme:
 os.chdir(os.path.normpath(os.path.join(os.path.abspath(__file__), os.pardir)))
 
 setup(
-    name='wagtail_simple_gallery',
+    name='wagtail-simple-gallery',
     version=__version__,
     author='Teemu Nieminen',
     author_email='temeez.dev@gmail.com',
@@ -19,6 +19,7 @@ setup(
     url='https://github.com/temeez/wagtail-simple-gallery',
     keywords='wagtail cms model page tempaltetags',
     packages=find_packages(),
+    include_package_data=True,
     install_requires=[
         'wagtail>=1.5,<1.7',
     ],

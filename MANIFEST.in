@@ -1,6 +1,6 @@
 include LICENSE.txt
 include README.md
-recursive-include wagtail_simple_gallery *.html
 recursive-include wagtail_simple_gallery *.py
+recursive-include wagtail_simple_gallery/templates *.html
 recursive-include wagtail_simple_gallery/static *.js
 recursive-include wagtail_simple_gallery/static *.css
