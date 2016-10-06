@@ -2,7 +2,7 @@
 Is an extension for Torchbox's [Wagtail CMS](https://github.com/torchbox/wagtail) for creating a simple image gallery either by creating a page using the `Simple Gallery Index` template or using the `{% simple_gallery %}` templatetag.
 
 ## Requirements
- - Default wagtail image model!
+ - Default wagtail image model in use!
 
 ## Compability
 Made and tested with Wagtail 1.5.3 and Django 1.9.9
@@ -11,7 +11,7 @@ Made and tested with Wagtail 1.5.3 and Django 1.9.9
 ## Quick Install
 **WARNING:** If you are already using a [custom image model](http://docs.wagtail.io/en/latest/advanced_topics/images/custom_image_model.html), you cannot use this as is.
 
- - Download and install wagtail_simple_gallery.
+ - `pip install wagtail-simple-gallery`.
  - Add `wagtail_simple_gallery` into your `INSTALLED_APPS`.
  - `WAGTAILIMAGES_IMAGE_MODEL = 'wagtail_simple_gallery.CustomImage'` django setting.
  - Run `python manage.py migrate wagtail_simple_gallery`
