@@ -1,35 +1,39 @@
 # Wagtail Simple Gallery
-Is an extension for Torchbox's [Wagtail CMS](https://github.com/torchbox/wagtail) for creating a simple image gallery either by creating a page using the `Simple Gallery Index` template or using the `{% simple_gallery %}` templatetag.
+Is an extension for Torchbox's [Wagtail CMS](https://github.com/torchbox/wagtail) for creating a simple image gallery either by creating a page using the template or templatetag.
 
-## Requirements
- - Default wagtail image model in use!
-
-## Compability
-Made and tested with Wagtail 1.5.3 and Django 1.9.9
+Current version should work with Wagtail version >= 1.5.3 and Python 2.7, 3.4 and 3.5.
 
 
-## Quick Install
-**WARNING:** If you are already using a [custom image model](http://docs.wagtail.io/en/latest/advanced_topics/images/custom_image_model.html), you cannot use this as is.
+## Getting started
+### Install
+- Install via pip `pip install wagtail-simple-gallery`.
+- Add `wagtail_simple_gallery` to `INSTALLED_APPS` in your project settings.
+- Run `python manage.py migrate wagtail_simple_gallery`.
 
- - `pip install wagtail-simple-gallery`.
- - Add `wagtail_simple_gallery` into your `INSTALLED_APPS`.
- - `WAGTAILIMAGES_IMAGE_MODEL = 'wagtail_simple_gallery.CustomImage'` django setting.
- - Run `python manage.py migrate wagtail_simple_gallery`
+### Use
+- Create a new collection in Wagtail CMS: **Settings -> Collections**.
+- Add or upload images to the collection.
+- Create a new page using the **Simple Gallery Index** template and select the new collection.
+- You are done, preview or publish the page and you should see the gallery in action.
 
 
 ## Features / Options
-- Image
-    - "Show in Gallery"-checkbox.
-- Gallery Page
-    - Toggleable [Lightbox](https://feimosi.github.io/baguetteBox.js/) for viewing images.
-    - Show all images, which have 'show in gallery' checked, or only those with certain tags.
-    - The amount of images shown on one page (before the paginator kicks in) is changeable.
+- Toggleable [Lightbox](https://feimosi.github.io/baguetteBox.js/) for viewing images.
+- Show images from selected collection.
+- The amount of images shown on one page (before the paginator kicks in) is changeable.
 
 
-## `{% simple_gallery %}` tag
- - `tags` (default: None): Filter images by their tags. Example: `{% simple_gallery tags="cats dogs" %}`.
- - `image_limit` (default: None): Limit the amount of images to show. Example: `{% simple_gallery image_limit=4 %}`
- - `use_lightbox` (default: True): Use lightbox for viewing images. Example: `{% simple_gallery use_lightbox=False %}`
+## Templatetags
+### `{% simple_gallery %}` inclusion tag
+Uses the template **wagtail_simple_gallery/simple_gallery.html**.
+
+- `collection` (default: None): Show images from this collection. **Required**, example: `{% simple_gallery collection="Root" %}`.
+- `tags` (default: None): Filter images by their tags. Example: `{% simple_gallery tags="cats dogs" %}`.
+- `image_limit` (default: None): Limit the amount of images to show. Example: `{% simple_gallery image_limit=4 %}`.
+- `use_lightbox` (default: True): Use lightbox for viewing images. Example: `{% simple_gallery use_lightbox=False %}`.
+
+### `{% img|original_url %}` filter
+- Takes wagtails Image object and returns its real original url, not the one that wagtail creates. Example: `/media/original_images/foo.jpg`.
 
 
 ## Template
