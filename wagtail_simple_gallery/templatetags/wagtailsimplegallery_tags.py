@@ -16,7 +16,7 @@ def simple_gallery(collection=None, tags=None, image_limit=None, use_lightbox=Tr
     try:
         images = get_gallery_images(collection, tags=tags.split() if tags else None)
         if image_limit:
-            images = images[:image_limit]
+            images = images[:int(image_limit)]
     except:
         pass
     return {'gallery_images': images, 'use_lightbox': use_lightbox}
