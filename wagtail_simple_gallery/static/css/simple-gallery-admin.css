@@ -1,0 +1,34 @@
+@media screen and (min-width: 90em) {
+  .wrapper {
+    max-width: 100%;
+  }
+}
+
+@media screen and (min-width: 50em) {
+  .listing.images > li {
+    padding: 0.6rem;
+    width: auto;
+    height: auto;
+    border: 0;
+  }
+
+  .listing.images > li .image {
+    height: auto;
+  }
+
+  .listing.images {
+    border: 0;
+  }
+}
+
+.listing.images img {
+  box-shadow: 1px 1px 3px #333;
+}
+
+.listing h3 {
+  padding-top: 3px;
+  max-width: 168px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}

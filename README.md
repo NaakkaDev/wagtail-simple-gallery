@@ -25,7 +25,7 @@ Current version should work with Wagtail version >= 1.5.3 and Python 2.7, 3.4 an
 
 ## Templatetags
 ### `{% simple_gallery %}` inclusion tag
-Uses the template **wagtail_simple_gallery/simple_gallery.html**.
+Uses the template **wagtail_simple_gallery/simple_gallery.html**. You can use the simple-gallery style with this tag using: `<link rel="stylesheet" href="{% static 'css/simple-gallery.css' %}">`.
 
 - `collection` (default: None): Show images from this collection. **Required**, example: `{% simple_gallery collection="Root" %}`.
 - `tags` (default: None): Filter images by their tags. Example: `{% simple_gallery tags="cats dogs" %}`.
@@ -33,7 +33,7 @@ Uses the template **wagtail_simple_gallery/simple_gallery.html**.
 - `use_lightbox` (default: True): Use lightbox for viewing images. Example: `{% simple_gallery use_lightbox=False %}`.
 
 ### `{% img|original_url %}` filter
-- Takes wagtails Image object and returns its real original url, not the one that wagtail creates. Example: `/media/original_images/foo.jpg`.
+- Takes wagtails Image object and returns its real original url instead of the one that wagtail creates. Example: `/media/original_images/foo.jpg`.
 
 
 ## Template
@@ -45,3 +45,7 @@ Or if **simple_gallery_index.html** is good enough for your use, then you can ju
 
 {% block content %}{% endblock %}
 ```
+
+
+## Admin Interface
+The admin view for images is customized so it can show more images at once. By default there are 20 images on one page, but you can have 32 by adding `url(r'', include('wagtail_simple_gallery.urls')),` in your urls.py file.
