@@ -48,4 +48,4 @@ Or if **simple_gallery_index.html** is good enough for your use, then you can ju
 
 
 ## Admin Interface
-The admin view for images is customized so it can show more images at once. By default there are 20 images on one page, but you can have 32 by adding `url(r'', include('wagtail_simple_gallery.urls')),` in your urls.py file.
+The admin view for images is customized so it can show more images at once. By default there are 20 images on one page, but you can have 32 by adding `url(r'', include('wagtail_simple_gallery.urls')),` in your urls.py above the `url(r'^admin/', include(wagtailadmin_urls)),` line.
