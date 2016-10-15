@@ -1,2 +1,2 @@
 default_app_config = 'wagtail_simple_gallery.apps.WagtailSimpleGalleryConfig'
-__version__ = '0.3.1'
+__version__ = '0.3.2'

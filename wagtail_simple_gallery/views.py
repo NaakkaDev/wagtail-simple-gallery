@@ -1,5 +1,5 @@
 # wagtail/wagtail/wagtailimages/views/images.py
-# 7465e2e  on May 18
+# 7d490f7 on 17 Jun
 from __future__ import absolute_import, unicode_literals
 
 from django.shortcuts import render
@@ -8,7 +8,7 @@ from django.views.decorators.vary import vary_on_headers
 
 from wagtail.utils.pagination import paginate
 from wagtail.wagtailadmin.forms import SearchForm
-from wagtail.wagtailadmin.utils import PermissionPolicyChecker
+from wagtail.wagtailadmin.utils import PermissionPolicyChecker, popular_tags_for_model
 from wagtail.wagtailcore.models import Collection
 from wagtail.wagtailimages.models import get_image_model
 from wagtail.wagtailimages.permissions import permission_policy
@@ -69,7 +69,7 @@ def index(request):
             'is_searching': bool(query_string),
 
             'search_form': form,
-            'popular_tags': Image.popular_tags(),
+            'popular_tags': popular_tags_for_model(Image),
             'collections': collections,
             'current_collection': current_collection,
             'user_can_add': permission_policy.user_has_permission(request.user, 'add'),

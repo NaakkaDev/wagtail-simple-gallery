@@ -7,18 +7,25 @@
 @media screen and (min-width: 50em) {
   .listing.images > li {
     padding: 0.6rem;
-    width: auto;
-    height: auto;
+    max-width: 142px;
+    max-height: 160px;
     border: 0;
   }
 
   .listing.images > li .image {
+    max-height: 160px;
     height: auto;
   }
 
   .listing.images {
     border: 0;
   }
+
+  .listing.images > li .image img {
+    max-height: 132px;
+    max-width: 132px;
+  }
+
 }
 
 .listing.images img {
