@@ -21,7 +21,7 @@ setup(
     packages=find_packages(),
     include_package_data=True,
     install_requires=[
-        'wagtail>=1.5,<1.7',
+        'wagtail>=1.5,<1.10',
     ],
     classifiers=[
         'Environment :: Web Environment',
