@@ -68,6 +68,10 @@ class SimpleGalleryIndex(Page):
         context['gallery_images'] = images
         return context
 
+    class Meta:
+        verbose_name = _('Gallery index')
+        verbose_name_plural = _('Gallery indices')
+
 
 def get_gallery_images(collection, tags=None):
     images = None
