@@ -2,12 +2,12 @@ from __future__ import absolute_import, unicode_literals
 
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.db import models
+from django.utils.translation import ugettext_lazy as _
 
 from wagtail.wagtailadmin.edit_handlers import FieldPanel
 from wagtail.wagtailcore.fields import RichTextField
 from wagtail.wagtailcore.models import Page
 from wagtail.wagtailimages.models import Image
-from django.utils.translation import ugettext_lazy as _
 
 
 class SimpleGalleryIndex(Page):
