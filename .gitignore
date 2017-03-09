@@ -50,7 +50,6 @@ coverage.xml
 .hypothesis/
 
 # Translations
-*.mo
 *.pot
 
 # Django stuff:
@@ -93,6 +92,8 @@ ENV/
 # Rope project settings
 .ropeproject
 
+# idea (PyCharm)
+.idea/
 
 ### Django ###
 *.log
@@ -102,3 +103,4 @@ __pycache__/
 local_settings.py
 db.sqlite3
 media
+

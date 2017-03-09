@@ -4,3 +4,5 @@ recursive-include wagtail_simple_gallery *.py
 recursive-include wagtail_simple_gallery/templates *.html
 recursive-include wagtail_simple_gallery/static *.js
 recursive-include wagtail_simple_gallery/static *.css
+recursive-include wagtail_simple_gallery/locale *.po
+recursive-include wagtail_simple_gallery/locale *.mo
