@@ -1,7 +1,7 @@
 # Wagtail Simple Gallery
-Is an extension for Torchbox's [Wagtail CMS](https://github.com/torchbox/wagtail) for creating a simple image gallery either by creating a page using the template or templatetag.
+Is an extension for Torchbox's [Wagtail CMS](https://github.com/torchbox/wagtail) for creating a simple image gallery either by creating a page using the template or a templatetag.
 
-Current version works with Wagtail 1.9 - 1.6.3 and Python 2.7, 3.4 and 3.5.
+Current version works with Wagtail 1.10.x.
 
 
 ## Getting started

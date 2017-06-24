@@ -10,7 +10,7 @@ from wagtail.utils.pagination import paginate
 from wagtail.wagtailadmin.forms import SearchForm
 from wagtail.wagtailadmin.utils import PermissionPolicyChecker, popular_tags_for_model
 from wagtail.wagtailcore.models import Collection
-from wagtail.wagtailimages.models import get_image_model
+from wagtail.wagtailimages import get_image_model
 from wagtail.wagtailimages.permissions import permission_policy
 
 permission_checker = PermissionPolicyChecker(permission_policy)
