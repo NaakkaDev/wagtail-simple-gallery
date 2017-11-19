@@ -1,7 +1,7 @@
 # Wagtail Simple Gallery
 Is an extension for Torchbox's [Wagtail CMS](https://github.com/torchbox/wagtail) for creating a simple image gallery either by creating a page using the template or a templatetag.
 
-Current version works with Wagtail 1.10.x.
+Current version works with Wagtail 1.10.x - 1.13.x.
 
 
 ## Getting started
@@ -21,7 +21,7 @@ Current version works with Wagtail 1.10.x.
 - Toggleable [Lightbox](https://feimosi.github.io/baguetteBox.js/) for viewing images.
 - Show images from selected collection.
 - The amount of images shown on one page (before the paginator kicks in) is changeable.
-
+- A crude way to order the images shown on a gallery page. By default newest images are shown first, but this can be changed in the page content settings. If it's set to "Image title" then you can manually order images by inserting [<number>] into their title: "[00004] Cute cat".
 
 ## Templatetags
 ### `{% simple_gallery %}` inclusion tag
@@ -34,6 +34,10 @@ Uses the template **wagtail_simple_gallery/simple_gallery.html**. You can use th
 
 ### `{% img|original_url %}` filter
 - Takes wagtails Image object and returns its real original url instead of the one that wagtail creates. Example: `/media/original_images/foo.jpg`.
+
+
+### `{% img.alt|hide_num_order %}` filter
+- Hides the first occurance of `[<number>]` in the image title. E.g "[0010] Cute cat" -> "Cute cat"
 
 
 ## Template

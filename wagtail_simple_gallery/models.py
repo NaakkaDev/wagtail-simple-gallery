@@ -10,6 +10,12 @@ from wagtail.wagtailcore.models import Page
 from wagtail.wagtailimages.models import Image
 
 
+IMAGE_ORDER_TYPES = (
+    (1, 'Image title'),
+    (2, 'Newest image first'),
+)
+
+
 class SimpleGalleryIndex(Page):
     intro_title = models.CharField(
         verbose_name=_('Intro title'),
@@ -41,6 +47,7 @@ class SimpleGalleryIndex(Page):
         default=True,
         help_text=_('Use lightbox to view larger images when clicking the thumbnail.')
     )
+    order_images_by = models.IntegerField(choices=IMAGE_ORDER_TYPES, default=1)
 
     content_panels = Page.content_panels + [
         FieldPanel('intro_title', classname='full title'),
@@ -48,11 +55,12 @@ class SimpleGalleryIndex(Page):
         FieldPanel('collection'),
         FieldPanel('images_per_page', classname='full title'),
         FieldPanel('use_lightbox'),
+        FieldPanel('order_images_by'),
     ]
 
     @property
     def images(self):
-        return get_gallery_images(self.collection.name)
+        return get_gallery_images(self.collection.name, self)
 
     def get_context(self, request):
         images = self.images
@@ -73,10 +81,14 @@ class SimpleGalleryIndex(Page):
         verbose_name_plural = _('Gallery indices')
 
 
-def get_gallery_images(collection, tags=None):
+def get_gallery_images(collection, page, tags=None):
     images = None
     try:
-        images = Image.objects.filter(collection__name=collection).order_by('-created_at')
+        images = Image.objects.filter(collection__name=collection)
+        if page.order_images_by == 0:
+            images = images.order_by('title')
+        elif page.order_images_by == 1:
+            images = images.order_by('-created_at')
     except Exception as e:
         pass
     if images and tags:
