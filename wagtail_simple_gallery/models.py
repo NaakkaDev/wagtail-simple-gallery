@@ -1,5 +1,6 @@
 from __future__ import absolute_import, unicode_literals
 
+from django.conf import settings
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
@@ -79,6 +80,8 @@ class SimpleGalleryIndex(Page):
     class Meta:
         verbose_name = _('Gallery index')
         verbose_name_plural = _('Gallery indices')
+
+    template = getattr(settings, 'SIMPLE_GALLERY_TEMPLATE', 'wagtail_simple_gallery/simple_gallery_index.html')
 
 
 def get_gallery_images(collection, page, tags=None):

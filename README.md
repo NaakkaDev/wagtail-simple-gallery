@@ -23,6 +23,10 @@ Current version works with Wagtail 1.10.x - 1.13.x.
 - The amount of images shown on one page (before the paginator kicks in) is changeable.
 - A crude way to order the images shown on a gallery page. By default newest images are shown first, but this can be changed in the page content settings. If it's set to "Image title" then you can manually order images by inserting `[<number>]` into their title: "[00004] Cute cat".
 
+## Settings
+### `SIMPLE_GALLERY_TEMPLATE`
+You can override the `SimpleGalleryIndex` page template with this setting. Default: `'wagtail_simple_gallery/simple_gallery_index.html'`
+
 ## Templatetags
 ### `{% simple_gallery %}` inclusion tag
 Uses the template **wagtail_simple_gallery/simple_gallery.html**. You can use the simple-gallery style with this tag using: `<link rel="stylesheet" href="{% static 'css/simple-gallery.css' %}">`.
