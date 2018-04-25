@@ -1,17 +1,15 @@
 # wagtail/wagtail/wagtailimages/views/images.py
 # 7d490f7 on 17 Jun
-from __future__ import absolute_import, unicode_literals
-
 from django.shortcuts import render
 from django.utils.translation import ugettext as _
 from django.views.decorators.vary import vary_on_headers
 
 from wagtail.utils.pagination import paginate
-from wagtail.wagtailadmin.forms import SearchForm
-from wagtail.wagtailadmin.utils import PermissionPolicyChecker, popular_tags_for_model
-from wagtail.wagtailcore.models import Collection
-from wagtail.wagtailimages import get_image_model
-from wagtail.wagtailimages.permissions import permission_policy
+from wagtail.admin.forms import SearchForm
+from wagtail.admin.utils import PermissionPolicyChecker, popular_tags_for_model
+from wagtail.core.models import Collection
+from wagtail.images import get_image_model
+from wagtail.images.permissions import permission_policy
 
 permission_checker = PermissionPolicyChecker(permission_policy)
 

@@ -4,7 +4,7 @@ from __future__ import unicode_literals
 
 from django.db import migrations, models
 import django.db.models.deletion
-import wagtail.wagtailcore.fields
+import wagtail.core.fields
 
 
 class Migration(migrations.Migration):
@@ -21,7 +21,7 @@ class Migration(migrations.Migration):
             fields=[
                 ('page_ptr', models.OneToOneField(auto_created=True, on_delete=django.db.models.deletion.CASCADE, parent_link=True, primary_key=True, serialize=False, to='wagtailcore.Page')),
                 ('intro_title', models.CharField(blank=True, help_text='Optional H1 title for the gallery page.', max_length=250)),
-                ('intro_text', wagtail.wagtailcore.fields.RichTextField(blank=True, help_text='Optional text to go with the intro text.')),
+                ('intro_text', wagtail.core.fields.RichTextField(blank=True, help_text='Optional text to go with the intro text.')),
                 ('images_per_page', models.IntegerField(default=8, help_text='How many images there should be on one page.')),
                 ('use_lightbox', models.BooleanField(default=True, help_text='Use lightbox to view larger images when clicking the thumbnail.')),
                 ('collection', models.ForeignKey(help_text='Show images in this collection in the gallery view.', null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='+', to='wagtailcore.Collection')),

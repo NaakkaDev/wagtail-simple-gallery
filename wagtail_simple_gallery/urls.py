@@ -1,9 +1,8 @@
-from __future__ import absolute_import, unicode_literals
-
-from django.conf.urls import url
+from django.urls import path
 
 from .views import index
 
 urlpatterns = [
-    url(r'^admin/images/$', index, name='index'),
+    # FIXME: What if wagtailadmin is located in 'cms/' URL?
+    path('admin/images/', index, name='index'),
 ]
