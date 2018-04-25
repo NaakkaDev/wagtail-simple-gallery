@@ -1,7 +1,7 @@
 # Wagtail Simple Gallery
 Is an extension for Torchbox's [Wagtail CMS](https://github.com/torchbox/wagtail) for creating a simple image gallery either by creating a page using the template or a templatetag.
 
-Current version works with Wagtail 1.10.x - 1.13.x.
+Current version works with Wagtail 2.0.x & Django 2.0.x.
 
 
 ## Getting started
@@ -56,4 +56,4 @@ Or if **simple_gallery_index.html** is good enough for your use, then you can ju
 
 
 ## Admin Interface
-The admin view for images is customized so it can show more images at once. By default there are 20 images on one page, but you can have 32 by adding `url(r'', include('wagtail_simple_gallery.urls')),` in your urls.py above the `url(r'^admin/', include(wagtailadmin_urls)),` line. This requires wagtail version >= 1.6.3.
+The admin view for images is customized so it can show more images at once. By default there are 20 images on one page, but you can have 32 by adding `path('', include('wagtail_simple_gallery.urls')),` in your urls.py above the `re_path(r'^admin/', include(wagtailadmin_urls)),` line. This requires wagtail version >= 1.6.3.
