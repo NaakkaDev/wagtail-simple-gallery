@@ -27,7 +27,11 @@ Current version works with Wagtail 2.0.x & Django 2.0.x.
 ### `SIMPLE_GALLERY_TEMPLATE`
 You can override the `SimpleGalleryIndex` page template with this setting. Default: `'wagtail_simple_gallery/simple_gallery_index.html'`
 
+### `SIMPLE_GALLERY_ADMIN_URL_ROOT`
+You can use this with the [Admin Interface](#admin-interface) if you use something other than "admin" for accessing the cms admin panel. Default: `admin`
+
 ## Templatetags
+`{% load wagtailsimplegallery_tags %}`
 ### `{% simple_gallery %}` inclusion tag
 Uses the template **wagtail_simple_gallery/simple_gallery.html**. You can use the simple-gallery style with this tag using: `<link rel="stylesheet" href="{% static 'css/simple-gallery.css' %}">`.
 
@@ -56,4 +60,4 @@ Or if **simple_gallery_index.html** is good enough for your use, then you can ju
 
 
 ## Admin Interface
-The admin view for images is customized so it can show more images at once. By default there are 20 images on one page, but you can have 32 by adding `path('', include('wagtail_simple_gallery.urls')),` in your urls.py above the `re_path(r'^admin/', include(wagtailadmin_urls)),` line. This requires wagtail version >= 1.6.3.
+The admin view for images is customized so it can show more images at once. By default there are 20 images on one page, but you can have 32 by adding `path('', include('wagtail_simple_gallery.urls')),` in your urls.py above the wagtailadmin_urls include which can be `re_path(r'^admin/', include(wagtailadmin_urls)),`. This requires wagtail version >= 1.6.3.

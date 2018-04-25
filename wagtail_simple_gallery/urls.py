@@ -1,8 +1,10 @@
+from django.conf import settings
 from django.urls import path
 
 from .views import index
 
+ADMIN_ROOT = template = getattr(settings, 'SIMPLE_GALLERY_ADMIN_URL_ROOT', 'admin')
+
 urlpatterns = [
-    # FIXME: What if wagtailadmin is located in 'cms/' URL?
-    path('admin/images/', index, name='index'),
+    path('{}/images/'.format(ADMIN_ROOT), index, name='index'),
 ]

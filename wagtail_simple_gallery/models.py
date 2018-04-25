@@ -82,14 +82,15 @@ class SimpleGalleryIndex(Page):
     template = getattr(settings, 'SIMPLE_GALLERY_TEMPLATE', 'wagtail_simple_gallery/simple_gallery_index.html')
 
 
-def get_gallery_images(collection, page, tags=None):
+def get_gallery_images(collection, page=None, tags=None):
     images = None
     try:
         images = Image.objects.filter(collection__name=collection)
-        if page.order_images_by == 0:
-            images = images.order_by('title')
-        elif page.order_images_by == 1:
-            images = images.order_by('-created_at')
+        if page:
+            if page.order_images_by == 0:
+                images = images.order_by('title')
+            elif page.order_images_by == 1:
+                images = images.order_by('-created_at')
     except Exception as e:
         pass
     if images and tags:
