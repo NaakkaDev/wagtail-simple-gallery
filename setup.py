@@ -22,7 +22,7 @@ setup(
     include_package_data=True,
     install_requires=[
         'django>=2.0',
-        'wagtail>=2.0,<3.0',
+        'wagtail>=2.2,<3.0',
     ],
     classifiers=[
         'Environment :: Web Environment',
