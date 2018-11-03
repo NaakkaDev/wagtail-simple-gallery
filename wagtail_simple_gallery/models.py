@@ -7,6 +7,7 @@ from wagtail.admin.edit_handlers import FieldPanel
 from wagtail.core.fields import RichTextField
 from wagtail.core.models import Page
 from wagtail.images.models import Image
+from wagtail.images import get_image_model
 
 
 IMAGE_ORDER_TYPES = (
@@ -85,7 +86,7 @@ class SimpleGalleryIndex(Page):
 def get_gallery_images(collection, page=None, tags=None):
     images = None
     try:
-        images = Image.objects.filter(collection__name=collection)
+        images = get_image_model().objects.filter(collection__name=collection)
         if page:
             if page.order_images_by == 0:
                 images = images.order_by('title')
