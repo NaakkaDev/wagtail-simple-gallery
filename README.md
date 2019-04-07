@@ -1,7 +1,7 @@
 # Wagtail Simple Gallery
 Is an extension for Torchbox's [Wagtail CMS](https://github.com/torchbox/wagtail) for creating a simple image gallery either by creating a page using the template or a templatetag.
 
-Current version works with Wagtail 2.2.x & Django 2.0.x.
+Current version works with Wagtail 2.4.x & Django 2.1.x.
 
 
 ## Getting started

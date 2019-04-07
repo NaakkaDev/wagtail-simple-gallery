@@ -17,12 +17,12 @@ setup(
     long_description=README,
     license='MIT License',
     url='https://github.com/temeez/wagtail-simple-gallery',
-    keywords='wagtail cms model page tempaltetags',
+    keywords='wagtail cms model page templatetags',
     packages=find_packages(),
     include_package_data=True,
     install_requires=[
         'django>=2.0',
-        'wagtail>=2.2,<3.0',
+        'wagtail>=2.4,<3.0',
     ],
     classifiers=[
         'Environment :: Web Environment',
