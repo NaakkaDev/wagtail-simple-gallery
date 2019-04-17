@@ -23,6 +23,7 @@ setup(
     install_requires=[
         'django>=2.0',
         'wagtail>=2.2,<3.0',
+        'django-taggit',
     ],
     classifiers=[
         'Environment :: Web Environment',
