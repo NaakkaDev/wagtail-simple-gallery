@@ -73,6 +73,7 @@ class SimpleGalleryIndex(RoutablePageMixin, Page):
     def get_context(self, request):
         images = self.images
         tags = self.tags
+        context = super(SimpleGalleryIndex, self).get_context(request)
         page = request.GET.get('page')
         paginator = Paginator(images, self.images_per_page)
         try:
@@ -81,7 +82,6 @@ class SimpleGalleryIndex(RoutablePageMixin, Page):
             images = paginator.page(1)
         except EmptyPage:
             images = paginator.page(paginator.num_pages)
-        context = super(SimpleGalleryIndex, self).get_context(request)
         context['gallery_images'] = images
         context['gallery_tags'] = tags
         return context
@@ -104,14 +104,14 @@ class SimpleGalleryIndex(RoutablePageMixin, Page):
 
         images = get_gallery_images(self.collection.name, self, tags=taglist)
         tags = self.get_gallery_tags(tags=taglist)
-#        paginator = Paginator(images, self.images_per_page)
-#        page = request.GET.get('page')
-#        try:
-#            images = paginator.page(page)
-#        except PageNotAnInteger:
-#            images = paginator.page(1)
-#        except EmptyPage:
-#            images = paginator.page(paginator.num_pages)
+        paginator = Paginator(images, self.images_per_page)
+        page = request.GET.get('page')
+        try:
+            images = paginator.page(page)
+        except PageNotAnInteger:
+            images = paginator.page(1)
+        except EmptyPage:
+            images = paginator.page(paginator.num_pages)
         context = self.get_context(request)
         context['gallery_images'] = images
         context['gallery_tags'] = tags
@@ -129,8 +129,7 @@ class SimpleGalleryIndex(RoutablePageMixin, Page):
     def get_gallery_tags(self, tags=[]):
         images = get_gallery_images(self.collection.name, self, tags=tags)
         for img in images:
-            if not img.tags.all() in tags:
-                tags += img.tags.all()
+            tags += img.tags.all()
         tags = sorted(set(tags))
         return tags
 
@@ -139,7 +138,7 @@ def get_gallery_images(collection, page=None, tags=None):
     # Tags must be a list of tag names like ["Hasthag", "Kawabonga", "Winter is coming"]
     images = None
     try:
-        images = get_image_model().objects.filter(collection__name=collection)
+        images = get_image_model().objects.filter(collection__name=collection).prefetch_related("tags")
         if page:
             if page.order_images_by == 1:
                 images = images.order_by('title')
@@ -148,5 +147,5 @@ def get_gallery_images(collection, page=None, tags=None):
     except Exception as e:
         pass
     if images and tags:
-        images = images.filter(tags__name__in=tags).distinct()
+        images = images.filter(tags__name__in=tags).prefetch_related("tags").distinct()
     return images
