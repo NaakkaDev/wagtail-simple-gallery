@@ -15,6 +15,7 @@ setup(
     author_email='temeez.dev@gmail.com',
     description='A simple gallery app for Wagtail.',
     long_description=README,
+    long_description_content_type='text/markdown',
     license='MIT License',
     url='https://github.com/temeez/wagtail-simple-gallery',
     keywords='wagtail cms model page templatetags',
