@@ -6,10 +6,9 @@ from django.utils.translation import ugettext_lazy as _
 from wagtail.admin.edit_handlers import FieldPanel
 from wagtail.core.fields import RichTextField
 from wagtail.core.models import Page
-from wagtail.images.models import Image
 from wagtail.images import get_image_model
 
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from wagtail.contrib.routable_page.models import RoutablePageMixin, route
 from taggit.models import Tag
 
@@ -86,15 +85,19 @@ class SimpleGalleryIndex(RoutablePageMixin, Page):
         context['gallery_tags'] = tags
         return context
 
+    def get_gallery_tags(self, tags=[]):
+        images = get_gallery_images(self.collection.name, self, tags=tags)
+        for img in images:
+            tags += img.tags.all()
+        tags = sorted(set(tags))
+        return tags
+
     @route('^tags/$', name='tag_archive')
     @route('^tags/([\w-]+)/$', name='tag_archive')
     def tag_archive(self, request, tag=None):
         try:
             tag = Tag.objects.get(slug=tag)
         except Tag.DoesNotExist:
-            if tag:
-                msg = 'There are no blog posts tagged with "{}"'.format(tag)
-                messages.add_message(request, messages.INFO, msg)
             return redirect(self.url)
         try:
             taglist.append(tag)
@@ -118,7 +121,6 @@ class SimpleGalleryIndex(RoutablePageMixin, Page):
         context['current_tag'] = tag
         return render(request, 'wagtail_simple_gallery/simple_gallery_index.html', context)
 
-
     class Meta:
         verbose_name = _('Gallery index')
         verbose_name_plural = _('Gallery indices')
@@ -126,14 +128,6 @@ class SimpleGalleryIndex(RoutablePageMixin, Page):
     template = getattr(settings, 'SIMPLE_GALLERY_TEMPLATE', 'wagtail_simple_gallery/simple_gallery_index.html')
 
 
-    def get_gallery_tags(self, tags=[]):
-        images = get_gallery_images(self.collection.name, self, tags=tags)
-        for img in images:
-            tags += img.tags.all()
-        tags = sorted(set(tags))
-        return tags
-
- 
 def get_gallery_images(collection, page=None, tags=None):
     # Tags must be a list of tag names like ["Hasthag", "Kawabonga", "Winter is coming"]
     images = None

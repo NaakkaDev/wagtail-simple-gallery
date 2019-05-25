@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "simple_gallery_base.html" %}
 {% load static wagtailcore_tags wagtailimages_tags wagtailsimplegallery_tags %}
 
 {% block title %}{{ page.seo_title }}{% endblock %}
@@ -9,17 +9,22 @@
   <div class="container gallery-wrapper">
     <header>
       <div class="container">
-          <div class="row">
-              <div class="col-md-12">
-                  <h1>{{ page.title }}</h1>
-                  {% if page.intro_title %} <p class="intro-content">{{ page.intro_title }}</p> {% endif %}
-                  {% if page.intro_text %} {{ page.intro_text|richtext }} {% endif %}
-		  {% if current_tag %}<h2>#{{ current_tag }}</h2>{% endif %}
-                  {% for tag in gallery_tags %}
-                  <a href="/{{page.slug}}/tags/{{ tag.slug }}">#{{ tag }}</a>
-                  {% endfor %}
-              </div>
+        <div class="row">
+          <div class="col-md-12">
+            <h1>{{ page.title }}</h1>
+            {% if page.intro_title %}<p class="intro-content">{{ page.intro_title }}</p>{% endif %}
+            {% if page.intro_text %}{{ page.intro_text|richtext }}{% endif %}
+            {% if current_tag %}<h2>#{{ current_tag }}</h2>{% endif %}
+            {% if gallery_tags %}
+            <div class="gallery-tags">
+              Tags:
+              {% for tag in gallery_tags %}
+              <a href="/{{page.slug}}/tags/{{ tag.slug }}">#{{ tag }}</a>
+              {% endfor %}
+            </div>
+            {% endif %}
           </div>
+        </div>
       </div>
     </header>
 
