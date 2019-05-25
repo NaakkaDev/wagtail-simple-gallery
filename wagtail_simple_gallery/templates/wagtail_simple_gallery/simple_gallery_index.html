@@ -1,16 +1,26 @@
-{% extends "simple_gallery_base.html" %}
+{% extends "base.html" %}
 {% load static wagtailcore_tags wagtailimages_tags wagtailsimplegallery_tags %}
 
 {% block title %}{{ page.seo_title }}{% endblock %}
 {% block metadesc %}{{ page.search_description }}{% endblock %}
 
-{% block extra_style %}{% endblock %}
 
 {% block content %}
-  <div class="gallery-wrapper">
+  <div class="container gallery-wrapper">
     <header>
-      <h1>{{ page.intro_title }}</h1>
-      {{ page.intro_text|richtext }}
+      <div class="container">
+          <div class="row">
+              <div class="col-md-12">
+                  <h1>{{ page.title }}</h1>
+                  {% if page.intro_title %} <p class="intro-content">{{ page.intro_title }}</p> {% endif %}
+                  {% if page.intro_text %} {{ page.intro_text|richtext }} {% endif %}
+		  {% if current_tag %}<h2>#{{ current_tag }}</h2>{% endif %}
+                  {% for tag in gallery_tags %}
+                  <a href="/{{page.slug}}/tags/{{ tag.slug }}">#{{ tag }}</a>
+                  {% endfor %}
+              </div>
+          </div>
+      </div>
     </header>
 
     {% include 'wagtail_simple_gallery/simple_gallery.html' %}
@@ -24,7 +34,7 @@
           {% endif %}
         </div>
         <div class="col-sm-8 text-center">
-          <ul class="gallery-pagination padding-0">
+          <ul class="gallery-pagination">
           {% for page in gallery_images.paginator.page_range %}
             <li class="gallery-pagination-item {% if gallery_images.number == page  %}active{% endif %}">
               <a class="{% if gallery_images.number == page  %}active{% endif %}" href="?page={{page }}">{{ page }}</a>

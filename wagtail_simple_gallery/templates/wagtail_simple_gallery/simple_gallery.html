@@ -2,15 +2,15 @@
 
   <link rel="stylesheet" href="{% static 'css/baguetteBox.min.css' %}"/>
 
-  <div class="gallery-container">
+  <div class="gallery-container row">
   {% for img in gallery_images %}
-    {% image img width-260 as img_thumb %}
-    <span class="gallery-thumbnail-container">
+    {% image img fill-400x400 as img_thumb %}
+    <div class="gallery-thumbnail-container col-xs-4">
       <a href="{{ img|original_url }}" title="{{ img_thumb.alt|hide_num_order }}">
         <img src="{{ img_thumb.url }}" alt="{{ img_thumb.alt }}" class="gallery-thumbnail">
       </a>
       <link rel="preload" href="{{ img|original_url }}">
-    </span>
+    </div>
   {% endfor %}
   </div>
 
