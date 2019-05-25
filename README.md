@@ -1,7 +1,7 @@
 # Wagtail Simple Gallery
 Is an extension for Torchbox's [Wagtail CMS](https://github.com/torchbox/wagtail) for creating a simple image gallery either by creating a page using the template or a templatetag.
 
-Current version works with Wagtail 2.4.x & Django 2.1.x.
+Current version works with Wagtail 2.5.x & Django 2.1.x.
 
 
 ## Getting started
@@ -22,6 +22,7 @@ Current version works with Wagtail 2.4.x & Django 2.1.x.
 - Show images from selected collection.
 - The amount of images shown on one page (before the paginator kicks in) is changeable.
 - A crude way to order the images shown on a gallery page. By default newest images are shown first, but this can be changed in the page content settings. If it's set to "Image title" then you can manually order images by inserting `[<number>]` into their title: "[00004] Cute cat".
+- Tags.
 
 ## Settings
 ### `SIMPLE_GALLERY_TEMPLATE`
