@@ -119,7 +119,7 @@ class SimpleGalleryIndex(RoutablePageMixin, Page):
         context['gallery_images'] = images
         context['gallery_tags'] = tags
         context['current_tag'] = tag
-        return render(request, 'wagtail_simple_gallery/simple_gallery_index.html', context)
+        return render(request, getattr(settings, 'SIMPLE_GALLERY_TEMPLATE', 'wagtail_simple_gallery/simple_gallery_index.html'), context)
 
     class Meta:
         verbose_name = _('Gallery index')
