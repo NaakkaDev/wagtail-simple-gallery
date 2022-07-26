@@ -13,7 +13,7 @@ Current version works with Wagtail 2.8.x - 2.16.x & Django 2.2.x - 3.2.x.
 ### Use
 - Create a new collection in Wagtail CMS: **Settings -> Collections**.
 - Add or upload images to the collection.
-- Create a new page using the **Simple Gallery Index** template and select the new collection.
+- Create a new page using the **Gallery index** type and select the new collection.
 - You are done, preview or publish the page and you should see the gallery in action.
 
 
@@ -26,10 +26,13 @@ Current version works with Wagtail 2.8.x - 2.16.x & Django 2.2.x - 3.2.x.
 
 ## Settings
 ### `SIMPLE_GALLERY_TEMPLATE`
-You can override the `SimpleGalleryIndex` page template with this setting. Default: `'wagtail_simple_gallery/simple_gallery_index.html'`
+You can override the `SimpleGalleryIndex` page template with this setting. Default: `wagtail_simple_gallery/simple_gallery_index.html`
 
 ### `SIMPLE_GALLERY_ADMIN_URL_ROOT`
 You can use this with the [Admin Interface](#admin-interface) if you use something other than "admin" for accessing the cms admin panel. Default: `admin`
+
+### `SIMPLE_GALLERY_PAGE_TYPE` / `SIMPLE_GALLERY_PAGE_TYPE_PLURAL`
+The page type presented to a Wagtail CMS user can be adjusted with these settings. Defaults: `Gallery index` / `Gallery indices`.
 
 ## Templatetags
 `{% load wagtailsimplegallery_tags %}`

@@ -122,8 +122,8 @@ class SimpleGalleryIndex(RoutablePageMixin, Page):
         return render(request, getattr(settings, 'SIMPLE_GALLERY_TEMPLATE', 'wagtail_simple_gallery/simple_gallery_index.html'), context)
 
     class Meta:
-        verbose_name = _('Gallery index')
-        verbose_name_plural = _('Gallery indices')
+        verbose_name = _(getattr(settings, 'SIMPLE_GALLERY_PAGE_TYPE', 'Gallery index'))
+        verbose_name_plural = _(getattr(settings, 'SIMPLE_GALLERY_PAGE_TYPE_PLURAL', 'Gallery indices'))
 
     template = getattr(settings, 'SIMPLE_GALLERY_TEMPLATE', 'wagtail_simple_gallery/simple_gallery_index.html')
 
