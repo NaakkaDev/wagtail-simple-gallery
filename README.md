@@ -31,8 +31,8 @@ You can override the `SimpleGalleryIndex` page template with this setting. Defau
 ### `SIMPLE_GALLERY_ADMIN_URL_ROOT`
 You can use this with the [Admin Interface](#admin-interface) if you use something other than "admin" for accessing the cms admin panel. Default: `admin`
 
-### `SIMPLE_GALLERY_PAGE_TYPE` / `SIMPLE_GALLERY_PAGE_TYPE_PLURAL`
-The page type presented to a Wagtail CMS user can be adjusted with these settings. Defaults: `Gallery index` / `Gallery indices`.
+### `SIMPLE_GALLERY_PAGE_TYPE`
+The page type presented to a Wagtail CMS user can be adjusted with this setting. Default: `Gallery index`.
 
 ## Templatetags
 `{% load wagtailsimplegallery_tags %}`

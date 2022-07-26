@@ -123,7 +123,6 @@ class SimpleGalleryIndex(RoutablePageMixin, Page):
 
     class Meta:
         verbose_name = _(getattr(settings, 'SIMPLE_GALLERY_PAGE_TYPE', 'Gallery index'))
-        verbose_name_plural = _(getattr(settings, 'SIMPLE_GALLERY_PAGE_TYPE_PLURAL', 'Gallery indices'))
 
     template = getattr(settings, 'SIMPLE_GALLERY_TEMPLATE', 'wagtail_simple_gallery/simple_gallery_index.html')
 
