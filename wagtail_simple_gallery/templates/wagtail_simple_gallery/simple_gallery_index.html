@@ -35,7 +35,7 @@
       <div class="gallery-pagination-container row">
         <div class="col-sm-2">
           {% if gallery_images.has_previous %}
-          <a href="?page={{ gallery_images.previous_page_number }}{% for key,value in request.GET.items %}{% ifnotequal key 'page' %}&amp;{{ key }}={{ value }}{% endifnotequal %}{% endfor %}">&lt;&lt; Previous</a>
+          <a href="?page={{ gallery_images.previous_page_number }}{% for key,value in request.GET.items %}{% if key != 'page' %}&amp;{{ key }}={{ value }}{% endif %}{% endfor %}">&lt;&lt; Previous</a>
           {% endif %}
         </div>
         <div class="col-sm-8 text-center">
@@ -49,7 +49,7 @@
         </div>
         <div class="col-sm-2 text-right">
           {% if gallery_images.has_next %}
-          <a href="?page={{ gallery_images.next_page_number }}{% for key,value in request.GET.items %}{% ifnotequal key 'page' %}&amp;{{ key }}={{ value }}{% endifnotequal %}{% endfor %}">Next &gt;&gt;</a>
+          <a href="?page={{ gallery_images.next_page_number }}{% for key,value in request.GET.items %}{% if key != 'page' %}&amp;{{ key }}={{ value }}{% endif %}{% endfor %}">Next &gt;&gt;</a>
           {% endif %}
         </div>
       </div>
