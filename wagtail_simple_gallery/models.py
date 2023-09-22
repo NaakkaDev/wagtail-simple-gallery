@@ -93,7 +93,9 @@ class SimpleGalleryIndex(RoutablePageMixin, Page):
         context["gallery_tags"] = tags
         return context
 
-    def get_gallery_tags(self, tags=[]):
+    def get_gallery_tags(self, tags=None):
+        if tags is None:
+            tags = []
         images = get_gallery_images(self.collection.name, self, tags=tags)
         for img in images:
             tags += img.tags.all()
@@ -103,16 +105,13 @@ class SimpleGalleryIndex(RoutablePageMixin, Page):
     @route("^tags/$", name="tag_archive")
     @route("^tags/([\w-]+)/$", name="tag_archive")
     def tag_archive(self, request, tag=None):
+        taglist = []
         try:
             tag = Tag.objects.get(slug=tag)
         except Tag.DoesNotExist:
             return redirect(self.url)
-        try:
-            taglist.append(tag)
-        except NameError:
-            taglist = []
-            taglist.append(tag)
 
+        taglist.append(tag)
         images = get_gallery_images(self.collection.name, self, tags=taglist)
         tags = self.get_gallery_tags(tags=taglist)
         paginator = Paginator(images, self.images_per_page)
