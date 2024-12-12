@@ -44,10 +44,6 @@ Uses the template **wagtail_simple_gallery/simple_gallery.html**. You can use th
 - `image_limit` (default: None): Limit the amount of images to show. Example: `{% simple_gallery image_limit=4 %}`.
 - `use_lightbox` (default: True): Use lightbox for viewing images. Example: `{% simple_gallery use_lightbox=False %}`.
 
-### `{% img|original_url %}` filter
-- Takes wagtails Image object and returns its real original url instead of the one that wagtail creates. Example: `/media/original_images/foo.jpg`.
-
-
 ### `{% img.alt|hide_num_order %}` filter
 - Hides the first occurance of `[<number>]` in the image title. E.g "[0010] Cute cat" -> "Cute cat"
 

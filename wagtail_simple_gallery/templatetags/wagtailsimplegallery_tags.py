@@ -24,11 +24,6 @@ def simple_gallery(collection=None, tags=None, image_limit=None, use_lightbox=Tr
 
 
 @register.filter
-def original_url(image):
-    return os.path.join(settings.MEDIA_URL, str(image.file))
-
-
-@register.filter
 def hide_num_order(title):
     number_match = re.match(r'^.*?\[[^\d]*(\d+)[^\d]*\].*$', title)
     if number_match:
