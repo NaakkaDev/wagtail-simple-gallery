@@ -22,8 +22,8 @@ setup(
     packages=find_packages(),
     include_package_data=True,
     install_requires=[
-        "django>=2.2",
-        "wagtail>=2.5,<7.0",
+        "django>=4.2",
+        "wagtail>=5.0,<7.0",
     ],
     classifiers=[
         "Environment :: Web Environment",
