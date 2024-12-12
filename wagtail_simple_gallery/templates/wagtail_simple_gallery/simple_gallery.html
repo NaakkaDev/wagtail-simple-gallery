@@ -4,11 +4,12 @@
   <div class="row gallery-container">
   {% for img in gallery_images %}
     {% image img fill-250x250 as img_thumb %}
+    {% image img original as original_img %}
     <div class="gallery-thumbnail-container col-xs-3">
-      <a href="{{ img|original_url }}" title="{{ img_thumb.alt|hide_num_order }}">
+      <a href="{{ original_img.url }}" title="{{ img_thumb.alt|hide_num_order }}">
         <img src="{{ img_thumb.url }}" alt="{{ img_thumb.alt }}" class="gallery-thumbnail">
       </a>
-      <link rel="preload" href="{{ img|original_url }}">
+      <link rel="preload" href="{{ original_img.url }}">
     </div>
   {% endfor %}
   </div>
