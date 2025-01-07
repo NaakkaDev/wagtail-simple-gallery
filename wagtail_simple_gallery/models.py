@@ -102,8 +102,8 @@ class SimpleGalleryIndex(RoutablePageMixin, Page):
         tags = sorted(set(tags))
         return tags
 
-    @route("^tags/$", name="tag_archive")
-    @route("^tags/([\w-]+)/$", name="tag_archive")
+    @route(r"^tags/$", name="tag_archive")
+    @route(r"^tags/([\w-]+)/$", name="tag_archive")
     def tag_archive(self, request, tag=None):
         taglist = []
         try:
